@@ -4,18 +4,18 @@ import SingelProduct from '../singelProduct/page.tsx/singelProduct'
 import { ProductType } from '@/types/allProducts.types'
 import { Getloggeduserwishlist } from '@/wishListAction/Getloggeduserwishlist..action'
 import { wishListing } from '@/types/wishList.types'
+import getMyToken from '@/utilites/getMyToken.utilites'
 
 export default async function AllProducts() {
 
   let { data } = await getAllProducts()
+  let whishlistIds: string[] = []
 
-
-  const whishlist = await Getloggeduserwishlist()
-
-
-  const whishlistIds = whishlist.data.map((wishlist: wishListing) => wishlist.id)
-
-
+  const token = await getMyToken()
+  if (token) {
+    const whishlist = await Getloggeduserwishlist()
+    whishlistIds = whishlist.data.map((wishlist: wishListing) => wishlist.id)
+  }
 
   return (
     <>
