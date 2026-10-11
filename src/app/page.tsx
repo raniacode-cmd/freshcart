@@ -8,7 +8,9 @@ import Offers from "./_components/offers/Offers";
 export default function Home() {
   return (
    <>
+
  <MainSlider/>
+ 
  <HomeCards/>
  
   <CategorySlider/> 
